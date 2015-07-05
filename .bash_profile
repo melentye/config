@@ -29,6 +29,10 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 	fi
 fi
 
+# Set current directory name as terminal title
+# Source https://gist.github.com/phette23/5270658
+export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
+
 # Ruby
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
