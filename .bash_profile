@@ -108,6 +108,8 @@ if which subl > /dev/null; then export EDITOR="subl -w"; fi
 # Aliases
 alias prof="$EDITOR ~/.bash_profile"
 alias reprof=". ~/.bash_profile"
+# This is to suppress brew complaints related to pyenv
+alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 
 # Additional and private variables
 USER_PROFILE_DIR="$HOME/.profile.d"
