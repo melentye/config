@@ -98,6 +98,10 @@ export PATH="$PATH:/usr/local/sbin"
 # Set Sublime as default editor
 if which subl > /dev/null; then export EDITOR="subl -w"; fi
 
+# Aliases
+alias prof="$EDITOR ~/.bash_profile"
+alias reprof=". ~/.bash_profile"
+
 # Additional and private variables
 USER_PROFILE_DIR="$HOME/.profile.d"
 
