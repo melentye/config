@@ -79,6 +79,13 @@ if [ -f "$(brew --prefix)/share/cracklib-words" ]; then
 	export CRACKLIB_DICTPATH="$(brew --prefix)/share/cracklib-words"
 fi
 
+# Node Version Manager
+
+if [ -d "$HOME/.nvm" ] && [ -f "$(brew --prefix nvm)/nvm.sh" ]; then
+	export NVM_DIR=~/.nvm
+	source $(brew --prefix nvm)/nvm.sh
+fi
+
 # Suspend Ctrl+S combination
 stty -ixon 2> /dev/null
 
