@@ -33,6 +33,10 @@ fi
 # Source https://gist.github.com/phette23/5270658
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
+# SBT
+
+if which sbtenv > /dev/null; then eval "$(sbtenv init -)"; fi
+
 # Ruby
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
