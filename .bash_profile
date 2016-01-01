@@ -60,13 +60,10 @@ if which pyenv > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Gradle	
 
-if [ -d "$(brew --prefix)/Cellar/gradle/2.4" ]; then
-	export GRADLE_HOME="$(brew --prefix)/Cellar/gradle/2.4"	
+if [ -d "$(brew --prefix)/Cellar/gradle/2.10" ]; then
+	export GRADLE_HOME="$(brew --prefix)/Cellar/gradle/2.10"	
 	export PATH=$GRADLE_HOME/bin:$PATH
 fi
-
-export GATLING_HOME=~/Dev/gatling-charts-highcharts-bundle-2.1.6
-# export PATH=$GATLING_HOME/bin:$PATH
 
 # Vagrant
 
@@ -96,11 +93,6 @@ stty -ixon 2> /dev/null
 # Add ~/bin to PATH
 if [ -d "$HOME/bin" ]; then
 	export PATH="$HOME/bin:$PATH"
-fi
-
-if [ -d "$HOME/Dev/go" ]; then
-	export GOPATH="$HOME/Dev/go"
-	export PATH="$PATH:$GOPATH/bin"
 fi
 
 # And /usr/local/sbin
