@@ -1,0 +1,4 @@
+---
+
+- include: playbooks/homebrew.yml
+- include: playbooks/bash_config.yml

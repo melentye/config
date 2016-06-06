@@ -1,0 +1,11 @@
+---
+- name: Create bash profile
+  copy: src={{ role_path }}/files/bash_profile dest={{ ansible_env.HOME }}/.bash_profile
+
+- name: Create profile.d
+  file: path={{ ansible_env.HOME }}/.profile.d state=directory mode=0755
+
+- name: Create profile.d files
+  copy: src={{ role_path }}/files/{{ item }} dest={{ ansible_env.HOME }}/.profile.d/{{ item }}
+  with_items:
+    - such_git_aliases.sh
