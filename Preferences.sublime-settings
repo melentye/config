@@ -1,0 +1,10 @@
+{
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"theme": "Material-Theme.sublime-theme",
+    "color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+    "material_theme_small_tab": true,
+    "material_theme_small_statusbar": true,
+}
