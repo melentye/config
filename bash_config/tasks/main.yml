@@ -9,3 +9,4 @@
   copy: src={{ role_path }}/files/{{ item }} dest={{ ansible_env.HOME }}/.profile.d/{{ item }}
   with_items:
     - such_git_aliases.sh
+    - haskell.sh
