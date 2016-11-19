@@ -11,10 +11,11 @@ GIT_PS1_SHOWDIRTYSTATE=true
 export LS_OPTIONS='--color=auto'
 export CLICOLOR='Yes'
 export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+BREW_PREFIX=$(brew --prefix)
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-  if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
+if [ -f $BREW_PREFIX/etc/bash_completion ]; then
+  . $BREW_PREFIX/etc/bash_completion
+  if [ -f $BREW_PREFIX/etc/bash_completion.d/git-prompt.sh ]; then
 	# source http://neverstopbuilding.com/gitpro
 	export PS1=$LIGHT_GRAY"\u@\h"'$(
 			if [[ $(__git_ps1) =~ \*\)$ ]]
@@ -34,57 +35,40 @@ fi
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 # SBT
-
-if which sbtenv > /dev/null; then eval "$(sbtenv init -)"; fi
+if which sbtenv > /dev/null; 
+then 
+	eval "$(sbtenv init - --no-rehash)"; 
+  (sbtenv rehash &) 2> /dev/null
+fi
 
 # Ruby
-
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv > /dev/null; 
+then 
+	eval "$(rbenv init - --no-rehash)";
+  (rbenv rehash &) 2> /dev/null	
+fi
 
 # Java
-
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+if which jenv > /dev/null
+then
+  eval "$(jenv init - --no-rehash)"
+	(jenv rehash &) 2> /dev/null	
+fi
 
 # Python
-
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-if which pyenv > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
-# pip should only run if there is a virtualenv currently activated
-# export PIP_REQUIRE_VIRTUALENV=true
-
-# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-# export WORKON_HOME=~/.virtualenvs
-# source /usr/local/bin/virtualenvwrapper.sh	
-# workon default	
-
-# Gradle	
-
-if [ -d "$(brew --prefix)/Cellar/gradle/2.10" ]; then
-	export GRADLE_HOME="$(brew --prefix)/Cellar/gradle/2.10"	
-	export PATH=$GRADLE_HOME/bin:$PATH
+if which pyenv > /dev/null 
+then 
+	eval "$(pyenv init - --no-rehash)"
+	(pyenv rehash &) 2> /dev/null
+  eval "$(pyenv virtualenv-init -)"	
 fi
 
 # Vagrant
-
 # export VAGRANT_DEFAULT_PROVIDER=cloudstack
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
-# Erlang/OTP
-
-if [ -f "$HOME/.kerl/envs/R15B03-1-vanilla/activate" ]; then
-  . "$HOME/.kerl/envs/R15B03-1-vanilla/activate"
-fi
-
-if [ -f "$(brew --prefix)/share/cracklib-words" ]; then
-	export CRACKLIB_DICTPATH="$(brew --prefix)/share/cracklib-words"
-fi
-
-# Node Version Manager
-
-if [ -d "$HOME/.nvm" ] && [ -f "$(brew --prefix nvm)/nvm.sh" ]; then
-	export NVM_DIR=~/.nvm
-	source $(brew --prefix nvm)/nvm.sh
+if [ -f "$BREW_PREFIX/share/cracklib-words" ]; then
+	export CRACKLIB_DICTPATH="$BREW_PREFIX/share/cracklib-words"
 fi
 
 # Suspend Ctrl+S combination
@@ -99,7 +83,9 @@ fi
 export PATH="$PATH:/usr/local/sbin"
 
 # Set Sublime as default editor
-if which subl > /dev/null; then export EDITOR="subl -w"; fi
+# if which subl > /dev/null; then export EDITOR="subl -w"; fi
+
+export EDITOR=vim
 
 # Aliases
 alias prof="$EDITOR ~/.bash_profile"
@@ -119,3 +105,4 @@ if [[ -d $USER_PROFILE_DIR && -r $USER_PROFILE_DIR && \
 			&& -f $i && -r $i ]] && . "$i"
 	done
 fi
+

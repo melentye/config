@@ -10,3 +10,4 @@
   with_items:
     - such_git_aliases.sh
     - haskell.sh
+
