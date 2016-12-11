@@ -11,3 +11,6 @@
     - such_git_aliases.sh
     - haskell.sh
 
+- name: Add vimrc
+  copy: src={{ role_path }}/files/vimrc dest={{ ansible_env.HOME }}/.vimrc
+
