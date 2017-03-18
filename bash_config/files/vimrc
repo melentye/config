@@ -14,9 +14,9 @@ Plugin 'editorconfig/editorconfig-vim'
 " CtrlP plugin
 Plugin 'ctrlpvim/ctrlp.vim'
 " Vim Airline - Status bar
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" Synax checker
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
+" Syntax checker
 Plugin 'vim-syntastic/syntastic'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -60,17 +60,19 @@ au BufNewFile,BufRead,BufReadPost *.app.src set syntax=Erlang
 au BufNewFile,BufRead * setlocal formatoptions-=cro
 " show line numbers
 " set number
+
 " Airline config
 " Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#fnamemod = ':t'
 " Only show status bar when two or more buffers
-let g:airline#extensions#tabline#buffer_min_count = 2
+" let g:airline#extensions#tabline#buffer_min_count = 2
 " Set Airline theme
-let g:airline_theme = 'light'
+" let g:airline_theme = 'light'
+
 " Show status bar on the bottom
-set laststatus=2
+" set laststatus=2
 
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
