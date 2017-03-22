@@ -11,7 +11,7 @@ if [ -f $BREW_PREFIX/etc/bash_completion ]; then
   . $BREW_PREFIX/etc/bash_completion
   if [ -f $BREW_PREFIX/etc/bash_completion.d/git-prompt.sh ]; then
     . $BREW_PREFIX/etc/bash_completion.d/git-prompt.sh	
-    export PS1="\u@\h \e[30;1m\w\e[0m$(__git_ps1) [\$?]\n\$ "
+    export PS1="\u@\h \e[30;1m\w\e[0m\$(__git_ps1) [\$?]\n\$ "
   fi
 fi
 
